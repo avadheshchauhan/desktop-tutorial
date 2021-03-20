@@ -66,15 +66,16 @@ function popHandler() {
     xhr.onload = function () {
         if (this.status === 200) {
             let obj = JSON.parse(this.responseText);
-            // let objParse = JSON.parse(obj);
-            console.log(obj);
+            let data = obj.data;
+            console.log(data);
             let list = document.getElementById('list');
-            str = "";
-            for (key in obj) {
-                str += `<li>${obj[key]} </li>`;
-            }
-            list.innerHTML = str;
-        } else {
+            data.forEach(function(element) {
+                    let str = `<li>${element["employee_name"]} </li>`;
+                
+                list.innerHTML += str;
+            });
+        } 
+        else {
             console.log("Some error occured")
         }
     }
@@ -82,5 +83,3 @@ function popHandler() {
     // send the request
     xhr.send();
     console.log("We are done fetching employees!");
-
-}
