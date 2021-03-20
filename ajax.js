@@ -83,5 +83,3 @@ function popHandler() {
     // send the request
     xhr.send();
     console.log("We are done fetching employees!");
-
-}
